@@ -1,3 +1,4 @@
+import os
 from bs4 import BeautifulSoup
 import requests
 import pandas as pd
@@ -41,6 +42,7 @@ def extract_table_content(urls, dataframe):
         for j in table.find_all('tr')[1:]:
            row_data = j.find_all('td')
            row = [i.text for i in row_data]
+           # replace the last row because it's link to another pdf url
            last_row = row_data[len(row_data) - 1].find('a', href=True)['href']
            row[len(row) - 1] = base_url + last_row
            length = len(dataframe)
@@ -54,6 +56,8 @@ def main():
     dataframe = pd.DataFrame(columns = headers)
     content = extract_table_content(sub_page_urls, dataframe)
 
-    dataframe.to_csv('hr_data.csv', index=False)
+    file_name = 'hr_data.csv'
+    print('File saved to: ', os.getcwd() + file_name)
+    dataframe.to_csv(file_name, index=False)
 
 main()
