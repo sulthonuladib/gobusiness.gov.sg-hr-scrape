@@ -56,11 +56,13 @@ def main():
     dataframe = pd.DataFrame(columns = headers)
     content = extract_table_content(sub_page_urls, dataframe)
 
-    csv_file_name = 'hr_data.csv'
-    excel_file_name = 'hr_data.xlsx'
+    out_folder = 'out'
+    csv_file_name = out_folder + '/hr_data.csv'
+    excel_file_name = out_folder + '/hr_data.xlsx'
+
     dataframe.to_csv(csv_file_name, index=False)
-    print('CSV File saved to: ', os.getcwd() + csv_file_name)
+    print('CSV File saved to: ', os.getcwd() + '/' + csv_file_name)
     dataframe.to_excel(excel_file_name, index=False)
-    print('Excel File saved to: ', os.getcwd() + excel_file_name)
+    print('Excel File saved to: ', os.getcwd() + '/' + excel_file_name)
 
 main()
