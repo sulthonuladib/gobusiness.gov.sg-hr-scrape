@@ -9,7 +9,7 @@ check your pip version, it's shouldbe either pip or pip3
 	```
 - Enter repository:
 	```shell
-  cd gobusiness.gov.sg-hr-scrape.git
+  cd gobusiness.gov.sg-hr-scrape
   ```
 - Install required library
 	```shell
